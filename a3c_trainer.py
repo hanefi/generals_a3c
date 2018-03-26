@@ -98,7 +98,7 @@ def train(rank, args, shared_model, optimizer=None):
         value_loss = 0
         R = Variable(R)
         gae = torch.zeros(1, 1)
-        for i in reversed(range(len(rewards))):
+        for i in reversed(list(range(len(rewards)))):
             R = args.gamma * R + rewards[i]
             advantage = R - values[i]
             value_loss = value_loss + 0.5 * advantage.pow(2)

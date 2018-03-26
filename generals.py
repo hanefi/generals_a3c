@@ -109,7 +109,7 @@ class Generals(object):
             elif msg[0] == "game_update":
                 yield self._make_update(msg[1])
             elif msg[0] in ["game_won", "game_lost"]:
-                print(self._make_result(msg[0], msg[1]))
+                print((self._make_result(msg[0], msg[1])))
                 break
             else:
                 logging.info("Unknown message type: {}".format(msg))

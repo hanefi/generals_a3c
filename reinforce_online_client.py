@@ -167,7 +167,7 @@ if __name__ == "__main__":
         # x1, y1, x2, y2, move_half = gen_valid_move(
         #     moves, label_map, army_map, dims)
 
-        print(x1, y1, x2, y2)
+        print((x1, y1, x2, y2))
         g.move(y1, x1, y2, x2, move_half=move_half)
-        print("--- {} seconds --- in turn {}".format((time.time() -
-                                                      start_time), update['turn']))
+        print(("--- {} seconds --- in turn {}".format((time.time() -
+                                                      start_time), update['turn'])))

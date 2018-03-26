@@ -7,7 +7,7 @@ class MultiGPUTrain(nn.Module):
 
     def __init__(self, module, n_gpu):
         super(MultiGPUTrain, self).__init__()
-        self.device_ids = range(n_gpu)
+        self.device_ids = list(range(n_gpu))
         if n_gpu > 1:
             self.replicas = nn.parallel.replicate(module, self.device_ids)
         else:
@@ -24,7 +24,7 @@ class MultiGPUTrain(nn.Module):
     def forward(self, inputs):
         # inputs should be variables
         if self.n_gpu > 1:
-            inputs = list(map(lambda x: (x,), inputs))
+            inputs = list([(x,) for x in inputs])
             outputs = nn.parallel.parallel_apply(self.replicas, inputs, devices=self.device_ids)
         else:
             outputs = [self.replicas[0].forward(inputs[0])]

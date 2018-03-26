@@ -32,10 +32,10 @@ data_y = np.load(args.data + "data_y.npz")['arr_0']
 data_z = np.load(args.data + "data_z.npz")['arr_0']
 
 counter = 0
-inputs = range(num_gpu)
-label1 = range(num_gpu)
-label2 = range(num_gpu)
-l_dim = range(num_gpu)
+inputs = list(range(num_gpu))
+label1 = list(range(num_gpu))
+label2 = list(range(num_gpu))
+l_dim = list(range(num_gpu))
 
 
 def backward_output(outputs, ll1, ll2):
@@ -55,8 +55,8 @@ def backward_output(outputs, ll1, ll2):
 loss = []
 print("Training network...")
 for _ in range(num_epochs):
-    for j in xrange(len(data_x)):
-        for k in xrange(len(data_x[j])):
+    for j in range(len(data_x)):
+        for k in range(len(data_x[j])):
             # Shapes of replay is given by batch_size * num_channels * h * w
             input_player = data_x[j][k]
             if len(input_player.shape) < 4:

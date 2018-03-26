@@ -227,7 +227,7 @@ class GeneralBase(object):
 
     def export_log(self):
         x, y, z = [], [], []
-        for index, value in self.player_datasets.iteritems():
+        for index, value in self.player_datasets.items():
             x.append(np.array(value[0]))
             y.append(np.array(value[1]))
             z.append(np.array(value[2]))

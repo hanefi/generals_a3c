@@ -61,10 +61,10 @@ def test(rank, args, shared_model):
             done = True
 
         if done:
-            print("Time {}, episode reward {}, episode length {}".format(
+            print(("Time {}, episode reward {}, episode length {}".format(
                 time.strftime("%Hh %Mm %Ss",
                               time.gmtime(time.time() - start_time)),
-                reward_sum, episode_length))
+                reward_sum, episode_length)))
             reward_sum = 0
             episode_length = 0
             actions.clear()

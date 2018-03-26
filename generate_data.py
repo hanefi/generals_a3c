@@ -34,7 +34,7 @@ def extract_data(l_f, threads):
     pool = Pool(threads)
 
     mapped_data = pool.map(extract_game, l_f)
-    x, y, z = zip(*mapped_data)
+    x, y, z = list(zip(*mapped_data))
 
     return x, y, z
 
@@ -58,9 +58,9 @@ if __name__ == "__main__":
     print("Extracting data from all gioreplay files...")
     x, y, z = extract_data(f_list, args.processes)
 
-    x = list(filter(lambda x: True if x else False, x))
-    y = list(filter(lambda y: True if y else False, y))
-    z = list(filter(lambda z: True if z else False, z))
+    x = list(map(bool,x))
+    y = list(map(bool,y))
+    z = list(map(bool,z))
 
     np.savez("data_x", x)
     np.savez("data_y", y)
